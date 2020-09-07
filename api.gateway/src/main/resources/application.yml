@@ -10,11 +10,10 @@ spring:
           uri: lb://feign-service
           predicates:
             - Path=/feign/**
-          filters:
-            - name: Hystrix
-              args:
-                name: fallbackCommand
-                fallbackUri: forward:/fallback/message
+        - id: restTemplateModule
+          uri: lb://resttemplate-service
+          predicates:
+            - Path=/dashboard/**
 
 eureka:
   client:
